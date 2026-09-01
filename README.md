@@ -125,7 +125,7 @@ docker compose up -d --build
   - [x] Design domain entities: `User`, `InvestigationCase`, `RiskRule`, `AuditLog`
 - [x] **ClickHouse Setup:**
   - [x] Design high-throughput `transactions` table using `MergeTree` engine
-  - [x] Configure partitioning strategy (by month) and primary sorting keys (`timestamp`, `from_bin`, `to_bin`)
+  - [ ] Configure partitioning strategy (by month) and primary sorting keys (`timestamp`, `from_bin`, `to_bin`)
 - [ ] **Neo4j Setup:**
   - [ ] Define graph node types: `Company`, `Person`, `BankAccount`
   - [ ] Define relationship edges: `OWNER_OF`, `DIRECTOR_OF`, `TRANSFERRED_FUNDS`

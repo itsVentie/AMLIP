@@ -1,0 +1,31 @@
+[project]
+name = "amlip-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.19.1",
+    "asyncpg>=0.31.0",
+    "clickhouse-connect>=1.7.2",
+    "dishka>=1.10.1",
+    "litestar>=2.24.0",
+    "nats-py>=2.15.0",
+    "neo4j>=6.3.0",
+    "pydantic>=2.0",
+    "redis>=8.1.0",
+    "sqlalchemy>=2.0",
+    "taskiq>=0.12.6",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.5",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+lint.select = ["E", "F", "I", "N", "ASYNC"]

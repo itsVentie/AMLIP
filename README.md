@@ -106,7 +106,7 @@ docker compose up -d --build
 - [x] Initialize monorepo project structure
 - [x] Setup Python 3.12 backend workspace with `uv` package manager and `ruff` linter
 - [x] Setup React 19 frontend workspace with `bun` and `biome` linter
-- [ ] Create `docker-compose.yml` for local infrastructure:
+- [x] Create `docker-compose.yml` for local infrastructure:
   - [ ] PostgreSQL 16 (Relational metadata)
   - [ ] ClickHouse (OLAP analytical engine)
   - [ ] Neo4j 5 (Graph database)

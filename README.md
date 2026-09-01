@@ -96,6 +96,110 @@ docker compose up -d --build
 
 ```
 
+---
+
+### Roadmap & Implementation Progress
+
+<details>
+<summary><b>Phase 1: Architecture & Local Dev Environment Setup</b></summary>
+
+- [ ] Initialize monorepo project structure
+- [ ] Setup Python 3.12 backend workspace with `uv` package manager and `ruff` linter
+- [ ] Setup React 19 frontend workspace with `bun` and `biome` linter
+- [ ] Create `docker-compose.yml` for local infrastructure:
+  - [ ] PostgreSQL 16 (Relational metadata)
+  - [ ] ClickHouse (OLAP analytical engine)
+  - [ ] Neo4j 5 (Graph database)
+  - [ ] NATS JetStream (Event broker)
+  - [ ] Redis (Cache & Session state)
+  - [ ] MinIO (S3 object storage for report exports)
+- [ ] Verify connectivity and health checks across all containerized services
+
+</details>
+
+<details>
+<summary><b>Phase 2: Database Schemas & Domain Modeling (DDD)</b></summary>
+
+- [ ] **PostgreSQL Setup:**
+  - [ ] Configure `SQLAlchemy 2.0` async models and `Alembic` migrations
+  - [ ] Design domain entities: `User`, `InvestigationCase`, `RiskRule`, `AuditLog`
+- [ ] **ClickHouse Setup:**
+  - [ ] Design high-throughput `transactions` table using `MergeTree` engine
+  - [ ] Configure partitioning strategy (by month) and primary sorting keys (`timestamp`, `from_bin`, `to_bin`)
+- [ ] **Neo4j Setup:**
+  - [ ] Define graph node types: `Company`, `Person`, `BankAccount`
+  - [ ] Define relationship edges: `OWNER_OF`, `DIRECTOR_OF`, `TRANSFERRED_FUNDS`
+  - [ ] Write Cypher indexes for rapid multi-hop pattern queries
+
+</details>
+
+<details>
+<summary><b>Phase 3: High-Volume Synthetic Data Engine (Anti-Mocking Strategy)</b></summary>
+
+- [ ] Create standalone Python generator using `Faker` and `mimesis`
+- [ ] Implement synthetic entity generation (5,000+ companies with Kazakhstan BIN/IIN numbers)
+- [ ] Seed Neo4j graph with complex ownership trees and hidden UBO connections
+- [ ] Seed ClickHouse with 1,000,000+ historical transactions
+- [ ] Inject pre-seeded financial crime patterns:
+  - [ ] *Circular money flows (Ring schemes)*
+  - [ ] *Pass-through shell company transactions*
+  - [ ] *Smurfing / Structuring split payments*
+- [ ] Build background worker publishing live stream transactions to **NATS** (50 events/sec)
+
+</details>
+
+<details>
+<summary><b>Phase 4: Backend Core Development (Python 3.12 / Litestar)</b></summary>
+
+- [ ] Configure **Dishka** Dependency Injection container (`APP` & `REQUEST` scopes)
+- [ ] Implement Domain-Driven Design (DDD) layers:
+  - [ ] `domain/` (Entities, value objects, repository interfaces)
+  - [ ] `infrastructure/` (ClickHouse, Neo4j, Postgres, NATS adapters)
+  - [ ] `application/` (Use cases: pattern detection, scoring algorithms)
+  - [ ] `presentation/` (Litestar REST API controllers)
+- [ ] Build key backend modules:
+  - [ ] `GET /api/v1/analytics/summary` (ClickHouse OLAP aggregated metrics)
+  - [ ] `GET /api/v1/graph/trace/{bin}` (Neo4j Cypher multi-hop graph execution)
+  - [ ] `GET /api/v1/stream/incidents` (SSE stream for live NATS transactions)
+- [ ] Integrate `pydantic-ai` with LLM endpoint for auto-generating case reports
+- [ ] Add unit and integration tests using `pytest-asyncio`
+
+</details>
+
+<details>
+<summary><b>Phase 5: Frontend Core Development (React 19 / FSD Architecture)</b></summary>
+
+- [ ] Setup Feature-Sliced Design folder structure (`app`, `pages`, `widgets`, `features`, `entities`, `shared`)
+- [ ] Generate type-safe API client using `@hey-api/openapi-ts` from backend OpenAPI spec
+- [ ] Setup global state management (`Zustand`) and server cache (`TanStack Query`)
+- [ ] **Module 1: Interactive Graph Canvas (`@xyflow/react`)**
+  - [ ] Create custom company & individual graph nodes
+  - [ ] Implement custom animated edges for transaction volume representation
+  - [ ] Add interactive node controls (expand sub-graphs, highlight high-risk paths)
+- [ ] **Module 2: High-Performance OLAP Dashboard**
+  - [ ] Build analytical charts using `ECharts` (volume spikes, risk distributions)
+  - [ ] Build high-density transaction tables using `TanStack Table`
+- [ ] **Module 3: Real-Time Incident Monitor**
+  - [ ] Connect SSE/WebSocket consumer to live transaction stream
+  - [ ] Add push notifications for high-risk alerts
+
+</details>
+
+<details>
+<summary><b>Phase 6: CI/CD, DevOps & Final Portfolio Presentation</b></summary>
+
+- [ ] Setup `.github/workflows/ci.yml` (automated `ruff`, `pytest`, `biome`, and build checks)
+- [ ] Write production-ready multi-stage `Dockerfile` for frontend and backend
+- [ ] Create Ansible playbooks / Terraform scripts for single-command VPS deployment
+- [ ] **Documentation & Polish:**
+  - [ ] Write detailed repository `README.md` with system architecture diagrams
+  - [ ] Add ClickHouse query benchmarks (e.g., *"SQL query execution over 1M records in 12ms"*)
+  - [ ] Record demo GIF / video showcasing real-time graph rendering and stream alerting
+
+</details>
+
+---
+
 ### Endpoints
 
 * **Web UI:** `http://localhost:3000`

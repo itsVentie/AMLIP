@@ -120,9 +120,9 @@ docker compose up -d --build
 <details>
 <summary><b>Phase 2: Database Schemas & Domain Modeling (DDD)</b></summary>
 
-- [ ] **PostgreSQL Setup:**
+- [x] **PostgreSQL Setup:**
   - [x] Configure `SQLAlchemy 2.0` async models and `Alembic` migrations
-  - [ ] Design domain entities: `User`, `InvestigationCase`, `RiskRule`, `AuditLog`
+  - [x] Design domain entities: `User`, `InvestigationCase`, `RiskRule`, `AuditLog`
 - [ ] **ClickHouse Setup:**
   - [ ] Design high-throughput `transactions` table using `MergeTree` engine
   - [ ] Configure partitioning strategy (by month) and primary sorting keys (`timestamp`, `from_bin`, `to_bin`)

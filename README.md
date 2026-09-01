@@ -85,8 +85,8 @@ This project includes a dedicated **Data Engine** that populates the platform wi
 
 ```bash
 # 1. Clone repository
-git clone [https://github.com/itsventie/aml-intelligence-platform.git](https://github.com/itsventie/aml-intelligence-platform.git)
-cd aml-intelligence-platform
+git clone [https://github.com/itsventie/AMLIP.git](https://github.com/itsventie/AMLIP.git)
+cd AMLIP
 
 # 2. Environment Setup
 cp .env.example .env

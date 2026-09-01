@@ -2,21 +2,22 @@ name: amlip
 
 services:
   postgres:
-    image: postgres:16-alpine
-    container_name: amlip_postgres
-    environment:
-      POSTGRES_DB: amlip_db
-      POSTGRES_USER: amlip_user
-      POSTGRES_PASSWORD: amlip_password
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U amlip_user -d amlip_db"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      image: postgres:16-alpine
+      container_name: amlip_postgres
+      environment:
+        POSTGRES_DB: amlip_db
+        POSTGRES_USER: amlip_user
+        POSTGRES_PASSWORD: amlip_password
+        POSTGRES_HOST_AUTH_METHOD: trust
+      ports:
+        - "5433:5432"
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U amlip_user -d amlip_db"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
 
   clickhouse:
     image: clickhouse/clickhouse-server:24.3-alpine

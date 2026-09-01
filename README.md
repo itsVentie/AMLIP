@@ -113,7 +113,7 @@ docker compose up -d --build
   - [x] NATS JetStream (Event broker)
   - [x] Redis (Cache & Session state)
   - [x] MinIO (S3 object storage for report exports)
-- [ ] Verify connectivity and health checks across all containerized services
+- [x] Verify connectivity and health checks across all containerized services
 
 </details>
 

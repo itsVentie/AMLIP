@@ -1,0 +1,85 @@
+name: amlip
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: amlip_postgres
+    environment:
+      POSTGRES_DB: amlip_db
+      POSTGRES_USER: amlip_user
+      POSTGRES_PASSWORD: amlip_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U amlip_user -d amlip_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3-alpine
+    container_name: amlip_clickhouse
+    environment:
+      CLICKHOUSE_DB: amlip_analytics
+      CLICKHOUSE_USER: amlip_user
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+      CLICKHOUSE_PASSWORD: amlip_password
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  neo4j:
+    image: neo4j:5.18-community
+    container_name: amlip_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/amlip_password
+      NEO4J_PLUGINS: '["apoc"]'
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: amlip_nats
+    command: ["-js", "-m", "8222"]
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+
+  redis:
+    image: redis:7-alpine
+    container_name: amlip_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  minio:
+    image: minio/minio:RELEASE.2024-03-15T20-13-24Z
+    container_name: amlip_minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: amlip_admin
+      MINIO_ROOT_PASSWORD: amlip_password
+    ports:
+      - "9002:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  postgres_data:
+  clickhouse_data:
+  neo4j_data:
+  redis_data:
+  minio_data:

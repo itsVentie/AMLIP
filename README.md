@@ -107,12 +107,12 @@ docker compose up -d --build
 - [x] Setup Python 3.12 backend workspace with `uv` package manager and `ruff` linter
 - [x] Setup React 19 frontend workspace with `bun` and `biome` linter
 - [x] Create `docker-compose.yml` for local infrastructure:
-  - [ ] PostgreSQL 16 (Relational metadata)
-  - [ ] ClickHouse (OLAP analytical engine)
-  - [ ] Neo4j 5 (Graph database)
-  - [ ] NATS JetStream (Event broker)
-  - [ ] Redis (Cache & Session state)
-  - [ ] MinIO (S3 object storage for report exports)
+  - [x] PostgreSQL 16 (Relational metadata)
+  - [x] ClickHouse (OLAP analytical engine)
+  - [x] Neo4j 5 (Graph database)
+  - [x] NATS JetStream (Event broker)
+  - [x] Redis (Cache & Session state)
+  - [x] MinIO (S3 object storage for report exports)
 - [ ] Verify connectivity and health checks across all containerized services
 
 </details>

@@ -137,7 +137,7 @@ docker compose up -d --build
 <summary><b>Phase 3: High-Volume Synthetic Data Engine (Anti-Mocking Strategy)</b></summary>
 
 - [ ] Create standalone Python generator using `Faker` and `mimesis`
-- [ ] Implement synthetic entity generation (5,000+ companies with Kazakhstan BIN/IIN numbers)
+- [ ] Implement synthetic entity generation (5,000+ companies with BIN/IIN numbers)
 - [ ] Seed Neo4j graph with complex ownership trees and hidden UBO connections
 - [ ] Seed ClickHouse with 1,000,000+ historical transactions
 - [ ] Inject pre-seeded financial crime patterns:

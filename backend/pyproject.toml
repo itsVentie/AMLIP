@@ -13,6 +13,7 @@ dependencies = [
     "nats-py>=2.15.0",
     "neo4j>=6.3.0",
     "pydantic>=2.0",
+    "pydantic-settings>=2.15.0",
     "redis>=8.1.0",
     "sqlalchemy>=2.0",
     "taskiq>=0.12.6",

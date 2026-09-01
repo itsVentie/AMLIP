@@ -104,7 +104,7 @@ docker compose up -d --build
 <summary><b>Phase 1: Architecture & Local Dev Environment Setup</b></summary>
 
 - [x] Initialize monorepo project structure
-- [ ] Setup Python 3.12 backend workspace with `uv` package manager and `ruff` linter
+- [x] Setup Python 3.12 backend workspace with `uv` package manager and `ruff` linter
 - [ ] Setup React 19 frontend workspace with `bun` and `biome` linter
 - [ ] Create `docker-compose.yml` for local infrastructure:
   - [ ] PostgreSQL 16 (Relational metadata)

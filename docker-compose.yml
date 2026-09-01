@@ -65,7 +65,7 @@ services:
       - redis_data:/data
 
   minio:
-    image: minio/minio:RELEASE.2024-03-15T20-13-24Z
+    image: minio/minio:latest
     container_name: amlip_minio
     command: server /data --console-address ":9001"
     environment:
